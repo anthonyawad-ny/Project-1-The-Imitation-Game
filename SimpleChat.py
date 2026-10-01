@@ -30,5 +30,5 @@ def recordAnswer(roundState, label, AnswerText):
 def getRoundHistory(roundState):
     return roundState["history"]
 
-def getRoundHistory(roundState):
+def reveal(roundState):
     return roundState["ai_label"]
