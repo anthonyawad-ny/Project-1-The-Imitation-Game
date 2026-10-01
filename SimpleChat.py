@@ -24,8 +24,11 @@ def recordQuestion(roundState, QuestionText):
     roundState["questions_asked"] +=1
     roundState["history"].append(("question", QuestionText))
 
-def recordAnswer(RoundState, label, AnswerText):
-    RoundState["history"].append((label, AnswerText))
+def recordAnswer(roundState, label, AnswerText):
+    roundState["history"].append((label, AnswerText))
+
+def getRoundHistory(roundState):
+    return roundState["history"]
 
 def getRoundHistory(roundState):
     return roundState["ai_label"]
