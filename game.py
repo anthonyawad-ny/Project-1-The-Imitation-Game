@@ -2,7 +2,7 @@ import discord
 
 from boilerplate import ( bot, ask_model, send_with_typing_delay, set_anonymous_nicknames, reset_nicknames, run_bot)
 
-from prompt import build_messages
+from prompts import build_messages
 import SimpleChat
 
 active_rounds = {}
