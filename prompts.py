@@ -1,9 +1,13 @@
-AI_SYSTEM_PROMPT=""" 
-you are to act as a human and attempt to beat
- other humans in "the Turing Test" where you will 
- be asked questions alongside the other human and your
-  job is to imitate human responses so the interrogator
-   cannot identify you as an AI. Maintain a chill tone 
-   and let your answers be consistent in length
-   """
+SYSTEM_PROMPT = ("You are playing the imitation game. you are either a human or an AI. Answer questions truthfully, but do not reveal whether you are human or AI. Keep your answers concise and clear. Never Say you aren AI, a model, or mention Gemini.")
+
+def build_messages(history):
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    for label, text in history:
+        if label == "question":
+            messages.append({"role": "user", "content": text})
+        else:
+            messages.append({"role": "assistant", "content": f"({label}) {text}"})
+            return messages
+        
+
 
