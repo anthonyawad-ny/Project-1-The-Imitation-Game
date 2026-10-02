@@ -8,4 +8,4 @@ def build_messages(history):
         else:
             messages.append({"role": "assistant", "content": f"({label}) {text}"})
     return messages
-
+        
