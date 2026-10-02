@@ -7,7 +7,5 @@ def build_messages(history):
             messages.append({"role": "user", "content": text})
         else:
             messages.append({"role": "assistant", "content": f"({label}) {text}"})
-            return messages
-        
-
+    return messages
 

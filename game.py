@@ -15,7 +15,7 @@ async def start_game(ctx, interrogator: discord.Member, person: discord.Member):
         return
 
     labels = await set_anonymous_nicknames([person, ctx.guild.me])
-    person_label = labels[person.id]
+    person_label = labels[person.id][-1]
 
     roundState = SimpleChat.new_round(str(interrogator.id), str(person.id), person_label)
     active_rounds[ctx.channel.id] = roundState
@@ -79,7 +79,3 @@ async def guess_cmd(ctx, letter: str):
     members_to_reset = [ctx.guild.me] + ([person_member] if person_member else [])
     await reset_nicknames(members_to_reset)
     del active_rounds[ctx.channel.id]
-
-
-if __name__ == "__main__":
-    run_bot()
