@@ -14,7 +14,7 @@ async def on_command_error(ctx, error):
 
 @bot.command(name="reset")
 async def reset_cmd(ctx):
-    nicknames = [m for m in ctx.guild.members if m.nick]
+    nicknamed = [m for m in ctx.guild.members if m.nick]
     await reset_nicknames(nicknamed)
     active_rounds.pop(ctx.channel.id, None)
     await ctx.send("Game reset.")
