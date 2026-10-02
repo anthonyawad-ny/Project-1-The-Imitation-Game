@@ -1,3 +1,4 @@
+import random
 import discord
 
 from boilerplate import ( bot, ask_model, send_with_typing_delay, set_anonymous_nicknames, reset_nicknames, run_bot)
@@ -9,10 +10,12 @@ active_rounds = {}
 
 
 @bot.command(name="StartGame")
-async def start_game(ctx, interrogator: discord.Member, person: discord.Member):
+async def start_game(ctx, player1: discord.Member, player2: discord.Member):
     if ctx.channel.id in active_rounds:
         await ctx.send("game is already in progress in this channel.")
         return
+    
+    interrogator, person = random.sample([player1, player2], k=2)
 
     labels = await set_anonymous_nicknames([person, ctx.guild.me])
     person_label = labels[person.id][-1]
