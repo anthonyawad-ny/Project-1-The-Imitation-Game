@@ -73,13 +73,9 @@ async def guess_cmd(ctx, letter: str):
     ai_was = SimpleChat.reveal(roundState)
     correct = (letter == ai_was)
     await ctx.send(
-        f"The Ai was really **{ai_was}**. " + ("you found them!" if correct else "You were wrong!")
+        f"The Ai was really **{ai_was}**." + ("you found them!" if correct else "You were wrong!")
     )
     person_member = ctx.guild.get_member(int(roundState["person"]))
     members_to_reset = [ctx.guild.me] + ([person_member] if person_member else [])
     await reset_nicknames(members_to_reset)
     del active_rounds[ctx.channel.id]
-
-
-if __name__ == "__main__":
-    run_bot()
