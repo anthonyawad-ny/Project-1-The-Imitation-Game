@@ -49,7 +49,7 @@ async def ask_cmd(ctx, *, question):
     messages = build_messages(roundState["history"])
     ai_text = await ask_model(messages)
     SimpleChat.recordAnswer(roundState, roundState["ai_label"], ai_text)
-    await send_with_typing_delay(ctx.channel, f"({roundState['ai_label']}) {ai_text}")
+    await send_with_typing_delay(ctx.channel, ai_text)
 
     await ctx.send(f"Player {roundState['person_label']}, your turn to answer!")
 
